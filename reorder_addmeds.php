@@ -10,12 +10,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cost = $_POST["cost"];
     $lead_time = $_POST["lead_time"];
 
+    
     if ($action == "add") {
         $sql = "INSERT INTO Supply VALUES ($supp_id, $med_id, $cost, $lead_time)";
 
         if ($conn->query($sql)) {
             $message = "Supply record added.";
         } else {
+            // Failed addition for some reason (SUPPLY). Output error
             $message = "Error: " . $conn->error;
         }
     }
@@ -28,6 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($conn->query($sql)) {
             $message = "Supply record updated.";
         } else {
+            // Failed update for some reason (SUPPLY). Output error
             $message = "Error: " . $conn->error;
         }
     }
@@ -39,6 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($conn->query($sql)) {
             $message = "Supply record deleted.";
         } else {
+            // Failed deletion for some reason (SUPPLY). Output error
             $message = "Error: " . $conn->error;
         }
     }
@@ -54,8 +58,11 @@ $result = $conn->query("SELECT s.supp_id, sp.supp_name, s.med_id, m.med_name, s.
 <html>
 <head>
     <title>Reorder / Add Medicine Form</title>
+    <link rel="stylesheet" href="ui_format.css">
 </head>
 <body>
+
+<div class="container">
 
 <h1>PharmaTrack</h1>
 <h2>Reorder / Add Medicine Form</h2>
@@ -111,6 +118,8 @@ while ($row = $result->fetch_assoc()) {
 ?>
 
 </table>
+
+</div>
 
 </body>
 </html>
