@@ -17,16 +17,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($conn->query($sql)) {
         echo "Prescription added successfully.<br>";
     } else {
+        // Error
         echo "Error: " . $conn->error;
     }
 }
 ?>
 
-<p><a href="homepage.php">Back to Homepage</a></p>
-
 <!DOCTYPE html>
 <html>
+<head>
+    <title>Prescription Entry</title>
+    <link rel="stylesheet" href="ui_format.css">
+</head>
 <body>
+
+<div class="container">
+
+<p><a href="homepage.php">Back to Homepage</a></p>
 
 <h2>Prescription Entry</h2>
 
@@ -42,6 +49,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <input type="submit" value="Add">
 </form>
+
+</div>
 
 </body>
 </html>
