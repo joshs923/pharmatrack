@@ -8,10 +8,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $first_name = $_POST["first_name"];
     $last_name = $_POST["last_name"];
 
-    $sql = "SELECT patient_id, first_name, last_name, phone, DOB, email, insurance_provider
-            FROM Patient
-            WHERE first_name = '$first_name'
-            AND last_name = '$last_name'";
+    // Take in subject fields and place them in full SQL statement. Vulnerable to attack.
+    $sql = "SELECT patient_id, first_name, last_name, phone, DOB, email, insurance_provider FROM Patient WHERE first_name = '$first_name' AND last_name = '$last_name'";
 
     $result = $conn->query($sql);
 }
@@ -21,8 +19,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 <head>
     <title>SQL Injection Demo - Vulnerable</title>
+    <link rel="stylesheet" href="ui_format.css">
 </head>
 <body>
+
+<div class="container">
 
 <h1>PharmaTrack</h1>
 <h2>Patient Search - Vulnerable Version</h2>
@@ -38,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <?php
 if ($sql != "") {
-    echo "<h3>SQL Query Used</h3>";
+    echo "<h3>SQL Statement Used</h3>";
     echo "<p>" . $sql . "</p>";
 }
 
@@ -67,11 +68,15 @@ if ($result && $result->num_rows > 0) {
         echo "</tr>";
     }
 
+
     echo "</table>";
 } else if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // No patients with that name
     echo "<p>No matching patient found.</p>";
 }
 ?>
+
+</div>
 
 </body>
 </html>
