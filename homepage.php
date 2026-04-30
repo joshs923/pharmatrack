@@ -15,6 +15,8 @@
     <li><a href="query_results.php">Query Results</a></li>
     <li><a href="update_prescription.php">Update Prescription</a></li>
     <li><a href="delete_prescription.php">Delete Prescription</a></li>
+    <li><a href="sql_injection_vulnerable.php">SQL Injection Demo VULNERABLE</a></li>
+    <li><a href="sql_injection_secure.php">SQL Injection Demo SECURE</a></li>
 </ul>
 
 </body>
