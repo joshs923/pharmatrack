@@ -44,6 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($conn->query($sql)) {
             $message = "Medicine deleted.";
         } else {
+            // Error
             $message = "Error: " . $conn->error;
         }
     }
@@ -56,8 +57,11 @@ $result = $conn->query("SELECT * FROM Medicine");
 <html>
 <head>
     <title>Inventory Dashboard</title>
+    <link rel="stylesheet" href="ui_format.css">
 </head>
 <body>
+
+<div class="container">
 
 <h1>PharmaTrack</h1>
 <h2>Inventory Dashboard</h2>
@@ -112,6 +116,8 @@ while ($row = $result->fetch_assoc()) {
 ?>
 
 </table>
+
+</div>
 
 </body>
 </html>
