@@ -6,12 +6,16 @@ $result = null;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $first_name = $_POST["first_name"];
     $last_name = $_POST["last_name"];
+    
 
+    // first_name and last_name have spots for their values in the SQL statement,
+    // but they are vetted first.
     $stmt = $conn->prepare("SELECT patient_id, first_name, last_name, phone, DOB, email, insurance_provider
                             FROM Patient
                             WHERE first_name = ?
                             AND last_name = ?");
 
+    // Takes the user's fields as data and not as an SQL statement. Injection cannot occur.
     $stmt->bind_param("ss", $first_name, $last_name);
     $stmt->execute();
 
@@ -23,8 +27,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 <head>
     <title>SQL Injection Demo - Secure</title>
+    <link rel="stylesheet" href="ui_format.css">
 </head>
 <body>
+
+<div class="container">
 
 <h1>PharmaTrack</h1>
 <h2>Patient Search - Prepared Statement Version</h2>
@@ -38,7 +45,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="reset" value="Clear">
 </form>
 
-<p>This version uses a prepared statement with placeholders.</p>
+<p>This version uses a prepared statement with placeholders as to prevent attacks that
+    use SQL injections.</p>
 
 <?php
 if ($result && $result->num_rows > 0) {
@@ -68,9 +76,12 @@ if ($result && $result->num_rows > 0) {
 
     echo "</table>";
 } else if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // No patients with that name
     echo "<p>No matching patient found.</p>";
 }
 ?>
+
+</div>
 
 </body>
 </html>
