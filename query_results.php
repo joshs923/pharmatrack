@@ -14,10 +14,14 @@ $result = $conn->query($sql);
 <html>
 <head>
     <title>Query Results</title>
+    <link rel="stylesheet" href="ui_format.css">
 </head>
 <body>
 
+<div class="container">
+
 <h1>PharmaTrack</h1>
+
 <h2>Query Results</h2>
 
 <p><a href="homepage.php">Back to Homepage</a></p>
@@ -34,6 +38,7 @@ $result = $conn->query($sql);
 </tr>
 
 <?php
+// Show results
 while ($row = $result->fetch_assoc()) {
     echo "<tr>";
     echo "<td>" . $row["presc_id"] . "</td>";
@@ -48,6 +53,8 @@ while ($row = $result->fetch_assoc()) {
 ?>
 
 </table>
+
+</div>
 
 </body>
 </html>
