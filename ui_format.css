@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 85%;
+    margin: 25px auto;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid gray;
+}
+
+
+h1 {
+    color: blue;
+}
+
+h2 {
+    color: black;
+}
+
+a {
+    color: blue;
+}
+
+form {
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+input, select {
+    margin: 5px;
+    padding: 5px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 15px;
+}
+
+th, td {
+    border: 1px solid grey;
+    padding: 7px;
+    text-align: left;
+}
+
+th {
+    background-color: blue;
+    color: beige;
+}
+
+.message {
+    border: 1px solid grey;
+    padding: 8px;
+    margin: 10px 0;
+}
+
+
+ul {
+    padding-left: 20px;
+}
+
+ul li {
+    margin: 10px 0;
+}
+
+ul li a {
+    font-size: 18px;
+    font-weight: bold;
+}
