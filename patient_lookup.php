@@ -11,11 +11,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<p><a href="homepage.php">Back to Homepage</a></p>
-
 <!DOCTYPE html>
 <html>
+<head>
+    <title>Patient Lookup</title>
+    <link rel="stylesheet" href="ui_format.css">
+</head>
 <body>
+
+<div class="container">
+
+<p><a href="homepage.php">Back to Homepage</a></p>
 
 <h2>Patient Lookup</h2>
 
@@ -32,6 +38,8 @@ if ($result && $result->num_rows > 0) {
     }
 }
 ?>
+
+</div>
 
 </body>
 </html>
