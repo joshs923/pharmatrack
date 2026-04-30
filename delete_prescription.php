@@ -9,10 +9,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($conn->query($sql)) {
         echo "Deleted successfully";
     } else {
+        // Failed deletion for some reason. Output error
         echo "Error: " . $conn->error;
     }
 }
+
+
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Prescription</title>
+    <link rel="stylesheet" href="ui_format.css">
+</head>
+<body>
+
+<div class="container">
 
 <p><a href="homepage.php">Back to Homepage</a></p>
 
@@ -20,3 +33,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     Prescription ID to delete: <input type="number" name="presc_id">
     <input type="submit" value="Delete">
 </form>
+
+</div>
+
+</body>
+</html>
